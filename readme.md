@@ -8,6 +8,8 @@ There are no save spots at all.
 The game progresses by you completing puzzles, exploring, and battling while maintaining your health.
 Puzzles include word unscrambling and riddles
 .Exploring is not a super important part; you don't have to explore certain places if you don't wish to, but I suggest it for some somewhat funny dialogue
+
+
 .========= AI STATMENT======
 
 I mainly used AI to REORGANIZE my code, as with all the puzzles conflicting with each other and all my functions being all over the place, I had it sort everything in order as much as it could.
