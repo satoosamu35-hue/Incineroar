@@ -16,6 +16,9 @@ I mainly used AI to REORGANIZE my code, as with all the puzzles conflicting with
 I also attempted to use music, so I used AI to figure out how to get the code to work, but it didn't work out, so I dropped it, and that section of the AI code is completely gone.I also used it to fix small errors that, for some reason, I could just not get to worlk eithout it 
 
 ==========================================
+
+
+
 The story and characters are completely mine. I did all the research for this game. I have the storyline and plot all set within a Google Doc I made before I started to code.
 i also codes a bit outside and experimented in a different terminal named code hs so i wouldn't mess with the code withing here.
 
