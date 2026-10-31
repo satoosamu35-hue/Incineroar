@@ -17,7 +17,17 @@ I also attempted to use music, so I used AI to figure out how to get the code to
 
 ==========================================
 
+if you want to play the game jus the game theres this link
 
+
+https://codehs.com/sandbox/koryzmax234/project/run
+
+if you want to see the code at the same time you play theres also tis link i believe it should work
+
+https://codehs.com/sandbox/koryzmax234/project
+
+
+==========================================
 
 The story and characters are completely mine. I did all the research for this game. I have the storyline and plot all set within a Google Doc I made before I started to code.
 i also codes a bit outside and experimented in a different terminal named code hs so i wouldn't mess with the code withing here.
