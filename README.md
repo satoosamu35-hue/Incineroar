@@ -11,13 +11,7 @@ The game progresses by you completing puzzles, exploring, and battling while mai
 Puzzles include word unscrambling and riddles
 .Exploring is not a super important part; you don't have to explore certain places if you don't wish to, but I suggest it for some somewhat funny dialogue
 
-
-.========= AI STATMENT======
-
-I mainly used AI to REORGANIZE my code, as with all the puzzles conflicting with each other and all my functions being all over the place, I had it sort everything in order as much as it could.
-I also attempted to use music, so I used AI to figure out how to get the code to work, but it didn't work out, so I dropped it, and that section of the AI code is completely gone.I also used it to fix small errors that, for some reason, I could just not get to worlk eithout it 
-
-==========================================
+the game's downloadable via exe file from the releases
 
 if you want to play the game jus the game theres this link
 
