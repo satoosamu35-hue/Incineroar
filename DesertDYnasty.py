@@ -1696,3 +1696,157 @@ WORLD_3 = {
         {"name": "Latte",    "price": 18,  "heal": 30},
     ],
 }
+
+def run_world2(player, friend, world, start=0):
+    print(f"\n{GREY}========== WORLD: {world['name']} =========={RESET}")
+    pause(1.5)
+
+    if start == 0:
+        player.small_defeated = 0
+        print(f"{GREY}- the road ahead -{RESET}")
+        pause(1)
+        while player.small_defeated < 5:
+            input(f"{GREY}[ ENTER ] walk on{RESET} ")
+            if random.random() < world["spawn_chance"]:
+                enemy = random.choice(world["small_monsters"])
+                enemy.hp = enemy.max_hp
+                if brothers_battle(player, friend, enemy) == "lost":
+                    return "lost"
+                if enemy.hp <= 0:
+                    player.small_defeated += 1
+                    print(f"{GREY}small monsters defeated: {player.small_defeated}/5{RESET}")
+            else:
+                print(f"  {GREY}the path is quiet for now.{RESET}")
+            pause(0.5)
+
+    if start <= 1:
+        print(f"\n{GREY}a small city rises in the distance.{RESET}")
+        pause(1.5)
+        town(player, world, friend)
+
+    if start <= 2:
+        print(f"\n{BLOOD}- something is waiting on the road -{RESET}")
+        pause(1.5)
+        nightsub = world["nightsub_boss"]
+        nightsub.hp = nightsub.max_hp
+        # the kit fox has so far been my hardest character to desing mainly becuase ervtyimg i draw him he wither loks like a cat or a chihuahua no inbetween
+        #i also think he just reminds me of my grnapas dog personality wise
+        type_out(f"{GREY}the kit fox plants its claymore and looks at you.{RESET}", 0.02)
+        pause(1)
+        print(f"{GREY}kit fox: my goodness! its_ humans! humans in my realm! you'll never get past me humans!{RESET}")
+        time.sleep(1.5)
+        print(f"{BBLUE}Araz: we just want to go home we dont have to fight you {RESET}")
+        time.sleep(1)
+        print(f"{GREY}kit fox: Never! ill never back down i the great Tibert shall never back down from a fight!{RESET}")
+        pause(1.5)
+        print(f"{PURPLE} ----- BATTLE START{RESET}")
+
+        result = brothers_battle(player, friend, nightsub)
+        if result == "lost":
+            return "lost"
+
+        # honeslty.. i do not remeber how i came up witht he name tibert it lowkey just came to me i ont even know what it means. ill googleit in a bit
+        if result == "spared":
+            print(f"{GREY}kit fox: AGH! FOILED BY A MERE TRAVELLER! BUT DO NOT THINK THIS DENTS MY ASCENT TO GENERALHOOD! A TRULY GREAT OFFICER KNOWS HOW TO TAKE A HITTING AND LOOK MAGNIFICENT WHILE DOING IT! BEHOLD MY MAGNIFICENT RETREAT!{RESET}")
+            pause(1.2)
+            print(f" the fox runs away{RESET}")
+            input("Press enter to bonk: ")
+            pause(1.2)
+            print(f"{BPURPLE} nadroj: i like that guy{RESET}")
+            pause(1.2)
+            for i in range(3):
+                print()
+            print(f"{BBLUE}Araz: hey little dude. are you good? not rattled up or anything?{RESET}")
+            pause(1.2)
+            print(f"{BPURPLE}nadroj: Nah bro im good{RESET}")
+            pause(1.2)
+            print(f"{BBLUE}Araz: alright then im going to scout ahead{RESET}")
+            play_scene()
+            print(f"{BBLUE} Araz: there you are bud cmon lets go.{RESET}")
+        else:
+            print(f"{GREY}kit fox: AGH! FOILED BY A MERE TRAVELLER! BUT DO NOT THINK THIS DENTS MY ASCENT TO GENERALHOOD! A TRULY GREAT OFFICER KNOWS HOW TO TAKE A HITTING AND LOOK MAGNIFICENT WHILE DOING IT! BEHOLD MY MAGNIFICENT RETREAT!{RESET}")
+            pause(1.2)
+            print(f" the fox runs away{RESET}")
+            pause(1.2)
+            print(f"{BPURPLE} nadroj: i like that guy{RESET}")
+            pause(1.2)
+            for i in range(3):
+                print()
+            print(f"{BBLUE}Araz: hey little dude. are you good? not rattled up or anything?{RESET}")
+            pause(1.2)
+            print(f"{BPURPLE}nadroj: Nah bro im good{RESET}")
+            pause(1.2)
+            print(f"{BBLUE}Araz: alright then im going to scout ahead{RESET}")
+            play_scene()
+            print(f"{BBLUE} Araz: there you are bud cmon lets go.{RESET}")
+# update tibert measn bold or brave people coming from old germanic and french. look at me being smart with my names
+        while True:
+            print(f"\n  {CYAN}1{RESET} go back to town")
+            print(f"  {CYAN}2{RESET} move forward")
+            c = input("  > ").strip()
+            if c == "1":
+                town(player, world, friend)
+            elif c == "2":
+                break
+            else:
+                print(f"  {GREY}1 or 2.{RESET}")
+
+    if start <= 3:
+        print(f"\n{GREY}- the road to the boss -{RESET}")
+        pause(1)
+        for i in range(3):
+            enemy = random.choice(world["small_monsters"])
+            enemy.hp = enemy.max_hp
+            print(f"\n{GREY}guard {i+1}/3{RESET}")
+            if brothers_battle(player, friend, enemy) == "lost":
+                return "lost"
+
+    nightboss = world["nightboss"]
+    nightboss.hp = nightboss.max_hp
+    # writing her perosnality was hard and not hard ebcuase she reminded me of hornet from silksong but then she also feels like she has asuperiority conplex which ive been wondeing about
+    #its funny im wondeifng and these are my charsatcers :'3
+    # tuis the life of an author who really wants to make video games
+    print(f"{GREY}coming into view you see a tunnel{RESET}")
+    tunnel(5)
+    print(f"{BPURPLE} nadroj: araz look its a tunnel! maybe thats our way out{RESET}")
+    input("[ ENTER ]" )
+    print("a rumble emerges, you turn to see the boss of this world.")
+    time.sleep(0.5)
+    type_out(f"{GREY}the boss of this world a huge rattle snake she coiled up blocking the exit{RESET}", 0.02)
+    pause(1)
+    print(f"{GREY}OH NO{RESET}")
+    time.sleep(1.5)
+    print(f"{BBLUE}Araz: hey knock it off, we just want to get home.{RESET}")
+    time.sleep(1)
+    print(f"{GREY}Anantas: You think you can just walk through my desert without consequences? I'm not soft like those mammals. {RESET}")
+    pause(1.5)
+    print(f"{BPURPLE}nadroj: We just need to move on; we don't need to fight you")
+    time.sleep(0.5)
+    print(f"{ICE}Anantas: You think I care?! No! I'm not going to be a failure like the last 2; I am worthy of my position!{RESET}")
+    pause(0.4)
+    type_out(f"The rattlesnake coils up and prepares to strike.{RESET}")
+    pause(1.5)
+
+    result = brothers_battle(player, friend, nightboss)
+    if result == "lost":
+        return "lost"
+
+    # i dont rmeebr exaclty where i go the name anantas but im cutting to the chase this time it means eternal/ endless fitting becuae this world is my infinite night eheheheheheheh 
+    sword_point()
+    print(f"{GREY}Anantas: Impossible, a pair of risers… who clearly don't know what they're getting into, bested me, not once! has a riser ever made it past me! {RESET}")
+    pause(1.2)
+    print(f"{BPURPLE}nadroj: there, We are done now; can we go?{RESET}")
+    pause(1)
+    print(f"{GREY}Anantas: Go through the tunnel and get out of my sight. Don't you believe you can beat me again? I'll turn your bodies to mush.{RESET}")
+    time.sleep(0.5)
+    print(f"{BBLUE}Araz: Noted…. Cmon bro{RESET}")
+    type_out(f"{GREEN} Araz runs through the exit leaving behind Nadroj for a second {RESET}")
+    pause(3)
+    glitch_shake(f"{RED} Anantas: You have the mark of %#&% in you… Watch yourself…{RESET}")
+    for i in range(3):
+        print()
+    print("Nadroj returns to his brother")
+    pause(1)
+    print(f"{BBLUE}Araz: there you are bud i found the portal lets go")
+    portal_closing()
+    return "cleared"
