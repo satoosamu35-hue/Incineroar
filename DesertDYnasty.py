@@ -1870,4 +1870,19 @@ def puzzle_gate2():
             print("You solved the puzzle! You may move on")
             break
         print("Wrong, try again!\n")
-
+#genuienly in the devlopent these gave me so much troubleeeee it would not work soemtimes :'3
+#devlopmet mode timeeeee this thing gave me so much trouble man am i glad i got it to work
+def dev_menu():
+    print(f"{GREY}[dev] start at:{RESET}")
+    print("  1 library           2 home               3 square fight")
+    print("  4 world 1 intro      5 desert road        6 desert town")
+    print("  7 jackrabbit         8 desert guards      9 kommo boss")
+    print(" 10 ice road          11 ice town          12 wolverine")
+    print(" 13 ice guards        14 ice boss")
+    print(" 15 night road        16 night town        17 kit fox")
+    print(" 18 night guards      19 night boss")
+    print("  ENTER = play everything from the start")
+    c = input("  [dev] > ").strip()
+    if c.isdigit() and int(c) >= 1 and int(c) <= 19:
+        return int(c)
+    return 0
