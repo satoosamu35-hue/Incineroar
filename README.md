@@ -1,102 +1,35 @@
-### Hi! Welcome to your VS-Code Space!
+# MY GAME
+This is my game.
+This game is based on a real concept I'm making with my two best friends called Desert Dynasty. 
+At the moment it's just a small text-based game meant to show the idea of the storyline and how it's going to go.
+Currently I only have 3 worlds done due to small time constraints, but I believe I got out the best that I possibly could.
+This game is a text-based game that requires reading and battle progression. This game is a rogue-like one; if you "fall" in the game, then you must restart at the moment.
+There are no save spots at all.
+The game progresses by you completing puzzles, exploring, and battling while maintaining your health.
+Puzzles include word unscrambling and riddles
+.Exploring is not a super important part; you don't have to explore certain places if you don't wish to, but I suggest it for some somewhat funny dialogue
 
-You can use this just like you would vs-code on your own computer! For security reasons, we can not give you root access to the container, but we have preinstalled a number of development tools for you!
 
-#### Pre-installed tools:
-If a tool you need is not listed, attempt to install it using one of the package managers listed, and if that is not possible, ask in #spaces on slack and I can probably add the tool!
+.========= AI STATMENT======
 
-If a tool listed here is not working, wait a few minutes and try again! The installation is ran in the background upon space creation to minimize space creation times, so you might have to wait a minute or two for all tools to become available
+I mainly used AI to REORGANIZE my code, as with all the puzzles conflicting with each other and all my functions being all over the place, I had it sort everything in order as much as it could.
+I also attempted to use music, so I used AI to figure out how to get the code to work, but it didn't work out, so I dropped it, and that section of the AI code is completely gone.I also used it to fix small errors that, for some reason, I could just not get to worlk eithout it 
 
-##### Hackatime
+==========================================
 
-Make sure to set your hackatime api key in settings! if you have done that, Hackatime has been auto installed and set up for you, and will be tracking your time
+if you want to play the game jus the game theres this link
 
-##### General
-```
-git
-github-cli
-curl
-wget
-nano
-vim
-unzip
-zip
-build-essentials
-cmake
-pkg-config
-jq
-tree
-htop
-tmux
-less
-ripgrep
-fd-find
-rsync
-openssh-client
-apt-transport-https
-ca-certificates
-gnupg
-```
-##### Python:
-```
-python3
-python3-pip
-python3-venv
-python3-dev
-python3-setuptools
-uv
-```
 
-##### Javascript:
-```
-nodejs
-npm
-yarn
-pnpm
-```
+https://codehs.com/sandbox/koryzmax234/project/run
 
-##### Java:
-```
-openjdk-17-jdk
-openjdk-17-jre
-```
+if you want to see the code at the same time you play theres also tis link i believe it should work
 
-##### Rust:
-```
-rust
-cargo
-```
+https://codehs.com/sandbox/koryzmax234/project
 
-##### PHP:
-```
-php 
-php-cli 
-php-common 
-php-curl 
-php-json 
-php-mbstring 
-php-xml 
-php-zip
-```
 
-##### Database:
-```
-sqlite3
-postgresql-client
-mysql-client
-redis-tools
-```
+==========================================
 
-##### Ruby:
-```
-ruby
-rails
-```
+The story and characters are completely mine. I did all the research for this game. I have the storyline and plot all set within a Google Doc I made before I started to code.
+i also codes a bit outside and experimented in a different terminal named code hs so i wouldn't mess with the code withing here.
 
-###### Other:
-```
-go
-crystal
-ffmpeg
-imagemagick
-```
+small thanks to @robopugo for introducing me to Stardance and helping me out with my game when i needed it 
