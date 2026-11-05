@@ -1649,3 +1649,50 @@ def run_world1(player, world, start=0):
     time.sleep(0.5)
     print(f"{BBLUE}Araz: Ned oh thank god. you're ok. We can go home now finally.{RESET}")
     return "cleared"
+
+#oooooooooooooooooo finally done with these two worlds. im stayign up past my bed tiem to do this...
+# anything for coding i say  im sligtghly loosing motivation just having to fix things but ireally want this game to be real so icant give upo on the little things >:3
+# ANYYWAYS WORLD 3
+#fun fact the ;etter number i have representing the creatures were totaly random i asked randoms in my class to pick a letter
+z1 = Creature("fennec fox", 12, [{"name":"nip","min":3,"max":4,"text":"it nips."}], gold=5)
+z2 = Creature("kangaroo rat", 12, [{"name":"bite","min":3,"max":4,"text":"it bites."}], gold=5)
+z3 = Creature("bat", 12, [{"name":"scratch","min":3,"max":6,"text":"it scratches."}], gold=9)
+z4 = Creature("sand cat", 14, [{"name":"smack","min":4,"max":6,"text":"it smacks."}], gold=8)
+z5 = Creature("bearded gecko", 14, [{"name":"sting","min":4,"max":6,"text":"it stings."}], gold=9)
+
+kitFox = Creature(
+    "Kit Fox", 35,
+    [
+      {"name":"paw punch","min":4,"max":7,"text":"it throws a punch at you.",
+       "funfact":"the smallest wild dog species in North America"},
+      {"name":"swing","min":5,"max":8,"text":"it swings its claymore at you"},
+      {"name":"bite","min":3,"max":6,"text":"it bites you ",
+       "funfact":"Kit foxes rarely drink water. They get most of their water from the food they eat."},
+    ],
+    can_spare=True, spare_threshold=0.25,
+    reward={"name":"Super Tea","heal":15}, gold=20,)
+
+rattlesnake = Creature(
+    "Rattlesnake", 40,
+    [
+      {"name":"poison spit","min":5,"max":7,"text":"it spits acid at you"},
+      {"name":"tail swipe","min":6,"max":9,"text":"it swipes its tail at you and you fall"},
+      {"name":"smack","min":4,"max":7,"text":"it hits you with its tail"},
+    ],
+    is_boss=True, gold=60,
+)
+
+WORLD_3 = {
+    "name": "Infinite Night",
+    "town_name": "Onyx Reach",
+    "small_monsters": [z1, z2, z3, z4, z5],
+    "town_creatures": ["leo","mia","shopkeep","jordan"],
+    "nightsub_boss": kitFox,
+    "nightboss": rattlesnake,
+    "spawn_chance": 0.7,
+    "shop_stock": [
+        {"name": "Super Tea", "price": 10,  "heal": 15},
+        {"name": "mango",  "price": 15,  "heal": 24},
+        {"name": "Latte",    "price": 18,  "heal": 30},
+    ],
+}
