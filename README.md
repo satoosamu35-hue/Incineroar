@@ -29,4 +29,4 @@ The story and characters are completely mine. I did all the research for this ga
 i also codes a bit outside and experimented in a different terminal named code hs so i wouldn't mess with the code withing here.
 
 small thanks to @robopugo for introducing me to Stardance and helping me out with my game when i needed it 
->>>>>>> 05a5a0ab413310ca8990644d0f34a45d1577c9e7
+
