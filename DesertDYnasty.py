@@ -1886,3 +1886,73 @@ def dev_menu():
     if c.isdigit() and int(c) >= 1 and int(c) <= 19:
         return int(c)
     return 0
+
+#finally after so many gosh darn defnitions i can finally run the world... WITH ANOTHER DEFINTIOOOONNNn
+if __name__ == "__main__":
+    start = dev_menu() if DEV else 0
+
+    if start <= 1:
+        scene_library()
+    if start <= 2:
+        scene_home()
+    if start <= 3:
+        scene_square()
+    if start <= 4:
+        scene_world1_intro()
+
+    # a time for da startinggggg
+    dev_jump = start >= 5
+    if start == 0:
+        start = 5
+
+    player = Player("Araz", 30)
+    if dev_jump:
+        player.gold = 25
+
+    # <<<< world oneeee>>>>>
+    if 5 <= start <= 9:
+        STATE = run_world(player, WORLD_1, start - 5)
+        if STATE == "lost":
+            print(f"\n{RED}=== GAME OVER ==={RESET}")
+            exit()
+        print(f"\n{PURPLE}=== WORLD CLEARED ==={RESET}")
+        print(f"{BLUE} eci rolwd")
+        puzzle_gate()
+        start = 10
+
+    # <<<<<< world twoooo>>>>
+    if 10 <= start <= 14:
+        player.max_hp = player.max_hp + 5
+        player.hp = player.max_hp
+        print(f"\n{GREEN}you step through the portal feeling stronger. max hp is now {player.max_hp}.{RESET}")
+        pause(1.5)
+        STATE = run_world1(player, WORLD_2, start - 10)
+        if STATE == "lost":
+            print(f"\n{RED}=== GAME OVER ==={RESET}")
+            exit()
+        print(f"\n{PURPLE}=== WORLD CLEARED ==={RESET}")
+        print(f"{GREY} gihnt dlowr")
+        puzzle_gate2()
+        start = 15
+
+    # <<<< world thrreeeeeee>>>>>
+    nadroj = Player2(YOUNG, 30)
+    player.max_hp = player.max_hp + 5
+    player.hp = player.max_hp
+    nadroj.max_hp = nadroj.max_hp + 5
+    nadroj.hp = nadroj.max_hp
+    print(f"\n{BPURPLE}{YOUNG} fights at your side now. you control both brothers.{RESET}")
+    print(f"{GREEN}you both feel stronger. {OLD} max hp: {player.max_hp}, {YOUNG} max hp: {nadroj.max_hp}{RESET}")
+    pause(1.5)
+
+    STATE = run_world2(player, nadroj, WORLD_3, start - 15)
+    if STATE == "lost":
+        print(f"\n{RED}=== GAME OVER ==={RESET}")
+        exit()
+    
+#im going to add the final puzzle ow just for stardance along with animation credits and  maybe music in 7th pd
+    print(f"{GREEN} IN ORDER TO PASS YOU MUST ANSWER THESE ThREE RIDDLES \n ONLY THEN WILL YOU BE ABLE TO RETURN HOME")
+    final_puz()
+    big_portal_closing()
+    play_credits()
+    print(f"\n{BYELLOW}=== DESERT DYNASTY - COMPLETE ==={RESET}")
