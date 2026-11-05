@@ -4,7 +4,7 @@ import sys
 import os
 
 #--------------------------------
-DEV = True
+DEV = False
 
 #---------------------------------
 # COLOR CODEs
