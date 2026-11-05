@@ -1850,3 +1850,24 @@ def run_world2(player, friend, world, start=0):
     print(f"{BBLUE}Araz: there you are bud i found the portal lets go")
     portal_closing()
     return "cleared"
+
+# YOOO PUZZLE TIME BABY 
+# i spent forveer in my free time lookign for puzzles that wouldnt be too hard but i didnt want to do another word unscrambker again sooo i shoose riddelssss
+#  i cant do like visual puzzles obvioulsy (i aint that good sadly... im getitng better) so we got typicall unscrmabing keeoing it simple
+def puzzle_gate():
+    puz_ans = "ice world"
+    while True:
+        ans = input("Solve: ")
+        if ans == puz_ans:
+            print("You solved the puzzle! You may move on")
+            break
+        print("Wrong, try again!\n")
+def puzzle_gate2():
+    puz_ans = "night world"
+    while True:
+        ans = input("Solve: ")
+        if ans == puz_ans:
+            print("You solved the puzzle! You may move on")
+            break
+        print("Wrong, try again!\n")
+
