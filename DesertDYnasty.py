@@ -50,10 +50,10 @@ def big_portal_closing(frames=16, delay=0.09):
 
 
         door = [
-            f"   /      \ ",
-            f" (       )",
-            f"  (       )",
-            f"  \     / "
+            fr"   /      \ ",
+            fr" (       )",
+            fr"  (       )",
+            fr"  \     / "
         ]
 
         frame_lines = []
@@ -69,7 +69,7 @@ def big_portal_closing(frames=16, delay=0.09):
                 print("\033[F" * 3, end="")
             
         print()
-ruins = """
+ruins = (fr"""
      .---.
 
      |   |      _.-._
@@ -81,16 +81,16 @@ ruins = """
   |     ||  |           |  |   |
   |     ||  |  \_____/  |  |   |
   |_____||__|___________|__|___|
-"""
-sand_dune = f"""
+""")
+sand_dune = (fr"""
      ________
     /    *    \ 
    / *       *  \ 
   /    *         ________
  /     *     *       *    \ 
 /__________________________\ 
-"""
-cactus = """
+""")
+cactus = (fr"""
       __
      |o |
      |  |   _
@@ -106,8 +106,8 @@ cactus = """
      |||
      |||
   \_______/
-"""
-camel = """
+""")
+camel = (fr"""
    _  _
   ( \/ )
 (. _ _ .)
@@ -116,7 +116,7 @@ camel = """
 \_  _ _ _/
  ||    ||
  ||    ||
-"""
+""")
 ans1 = "sand dune"
 ans2 = "camel"
 ans3 = "cactus"
