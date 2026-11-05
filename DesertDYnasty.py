@@ -74,7 +74,7 @@ ruins = """
 
      |   |      _.-._
      |   |    .'     '.
-    _|_  |   /  _   _  \\
+    _|_  |   /  _   _  \ 
    /   \ |  |  ( ) ( )  |  .---.
 
   |     ||  |   '._.'   |  |   |
@@ -417,4 +417,309 @@ def play_scene():
     dramatic_print("You break into a sprint towards the oldest...", delay=0.04)
     time.sleep(1.0)
     print("\n" * 2 + "=== GAME STATUS: NORMAL ===")
+
+# now for the super evil bad guy to come. nwo that i think abotu it while retyping this i severly dont remember if i named this guy.
+# ehhh sucks to suck
+def scene_square():
+    print()
+    print(f"{GREY}- THE SQUARE -{RESET}")
+
+
+    print("\033[35m DAY:SATURDAY \033[0m")
+    print("\033[91m CRASH \033[0m")
+
+
+    print(f"{BBLUE}Araz: What the heck was that?{RESET}")
+    print(f"{BBLUE}Araz: Cmon lil bro lets go check it out{RESET}")
+
+
+    print(f"{BBLUE}Araz: Come on, this way{RESET}")
+    time.sleep(1)
+
+
+    slide_arrow()
+
+
+    print(f"{BBLUE}Araz: woah!{RESET}")
+    print("He moves you out of the way, you narrowly dodge the spear")
+    time.sleep(1)
+    msg = input("What do you want to say (1/2)")
+    if msg in ("one", "1"):
+        print(f"{BBLUE}nadroj: Who are you, what do you want from us?{RESET}")
+    else:
+        print("What the heck dude?!")
+
+
+    time.sleep(1)
+
+
+    slide_arrow()
+    print("You dodge again it seems this monster doesn't want to talk")
+    print("Time to fight")
+
+
+    pause(1.2)
+    print("There is something at the far end, where the road turns.")
+    print("It is shaped like a man.")
+    print("Your eyes keep sliding off it.")
+    pause(1.8)
+
+
+    print()
+    print(f"{BLOOD}{BOSS} moves.{RESET}")
+    slide_arrow()
+    pause(0.5)
+    print("A spear is in the air.")
+    pause(0.4)
+    print(f"It is not aimed at you. It is aimed at {YOUNG}.")
+
+
+    pause(0.8)
+    print(f"{YOUNG}: ...")
+    pause(0.6)
+    print(f"{OLD}: Behind me. stay behind me.")
+    pause(1.8)
+
+
+    print()
+    print(f"{GREY}- you are both of them now -{RESET}")
+    pause(1)
+    print("Each round you pick one action for each brother.")
+    print(f"  {YELLOW}1{RESET}  strike     swing at the shape")
+    print(f"  {YELLOW}2{RESET}  guard      take the hit on your guard - half damage")
+    print(f"  {YELLOW}3{RESET}  call out   warn your brother - he guards for you")
+    pause(2)
+    print(f"{GREY}3 is the one that matters. they only last this long because they cover each other.{RESET}")
+    pause(2)
+
+
+    old_hp   = MAX_HP
+    young_hp = MAX_HP
+    round_no = 0
+
+
+    BOSS_ATTACKS = [
+        "A fist that is not a fist comes down like a dropped anvil",
+        "It is beside you. it was not beside you a moment ago",
+        "The air folds and something goes through it, fast",
+        "A sound like a struck bell, and the flagstones jump",
+    ]
+
+
+    while young_hp > 1:
+        round_no += 1
+        print(f"{GREY}- round {round_no} -{RESET}")
+        show_status(old_hp, young_hp)
+
+
+        a_old   = choose_action(OLD)
+        a_young = choose_action(YOUNG)
+        print()
+
+
+        if a_old == 1:
+            print(f"  {OLD} Swings. the blade crosses the monster and comes out clean.")
+            print(f"  {GREY}There is nothing there to cut.{RESET}")
+        elif a_old == 2:
+            print(f"  {OLD} Plants his feet and puts up his guard.")
+        else:
+            print(f"  {OLD} Shouts - {YOUNG} has time to get his guard up.")
+
+
+        if a_young == 1:
+            print(f"  {YOUNG} Swings, low and fast. it goes through the monster like smoke.")
+            print(f"  {GREY}The monster does not move.{RESET}")
+        elif a_young == 2:
+            print(f"  {YOUNG} Plants his feet and puts up his guard.")
+        else:
+            print(f"  {YOUNG} Shouts - {OLD} hears him and braces.")
+
+
+        guarded = set()
+        if a_old == 2:
+            guarded.add("old")
+        if a_young == 2:
+            guarded.add("young")
+        if a_old == 3:
+            guarded.add("young")
+        if a_young == 3:
+            guarded.add("old")
+
+
+        pause(0.8)
+        print()
+        print(f"  {BLOOD}{BOSS}{RESET} - {random.choice(BOSS_ATTACKS)}.")
+        pause(0.8)
+
+
+        base = random.randint(3, 5) + round_no // 2
+
+
+        dmg = base + 2
+        if "old" in guarded:
+            dmg = max(1, dmg // 2)
+        old_hp = max(1, old_hp - dmg)
+        print(f"  it catches {OLD}. {BLOOD}-{dmg}{RESET}"
+              + ("   (on his guard)" if "old" in guarded else ""))
+        if old_hp == 1:
+            print(f"  {GREY}He is still on his feet. He is always still on his feet.{RESET}")
+
+
+        dmg = base
+        if "young" in guarded:
+            dmg = max(1, dmg // 2)
+        young_hp = max(1, young_hp - dmg)
+        print(f"  it catches {YOUNG}. {BLOOD}-{dmg}{RESET}"
+              + ("   (on his guard)" if "young" in guarded else ""))
+        print()
+        pause(0.6)
+
+
+        if round_no == 2:
+            print(f"{GREY}  the blades are not doing anything.{RESET}")
+            pause(2)
+
+
+    print(f"{GREY}- 1 HP -{RESET}")
+    show_status(old_hp, young_hp)
+    pause(1.5)
+
+
+    print(f"{BLOOD}{BOSS} stops.{RESET}")
+    pause(1.5)
+    print("it was never fighting them. it was waiting for one of them to be slow.")
+    pause(1.8)
+
+
+    print()
+    type_out(f"it takes {OLD} by the throat and lifts him off the stones.", 0.02)
+    pause(1)
+    print(f"{OLD}'s feet leave the ground. he does not make a sound.")
+    pause(1.5)
+    print(f"{YOUNG} is face down on the flagstones behind them. one hit left in him.")
+    pause(1.8)
+
+
+    print()
+    print(f"{PURPLE}the air opens in twelve places.{RESET}")
+    pause(1)
+    print("arrows. not thrown - summoned. hanging in a ring around the square,")
+    print("all of them turned inward.")
+    pause(1.5)
+    print()
+    arrow_volley(rows=4)
+    print(f"{BLOOD}every one of them lands.{RESET}")
+    pause(1.5)
+    print(f"{OLD} is held up in the air with nowhere to go.")
+    pause(2)
+
+
+    print()
+    print(f"{GREY}   .   .   .{RESET}")
+    pause(2.5)
+    print(f"{YOUNG} opens his eyes.")
+    pause(1)
+    print("the stones are warm. the square is loud.")
+    pause(1.2)
+    type_out("he gets an elbow under himself. then a knee. then he is up.", 0.02)
+    pause(1.5)
+
+
+    print()
+    print("the spear is still in the flagstones. ten paces away, where it landed beside him.")
+    pause(1.5)
+    print(f"{YOUNG} looks at it. then at his brother in the air. then at it again.")
+    pause(1.5)
+    print(f"{YOUNG}: ...okay.")
+    pause(1.5)
+
+
+    print()
+    print(f"{YOUNG} crosses the square.")
+    pause(1)
+    print(f"{BOSS} does not turn around. it is busy.")
+    pause(1)
+    type_out("he takes the spear in both hands and puts it through the shape's back.", 0.02)
+    pause(1.5)
+
+
+    print()
+    print(f"{BLOOD}the arrows stop.{RESET}")
+    pause(1)
+    print("all twelve of them at once, like a held breath let go.")
+    pause(1.2)
+    print(f"{OLD} drops to the stones.")
+    pause(1.8)
+
+
+    print()
+    print("the shape goes still.")
+    pause(1)
+    print("then it starts to leak.")
+    pause(1.2)
+    print(f"{PURPLE}blot{RESET} - thick, black, wrong - running out of the wound and down its legs.")
+    pause(1.5)
+    print("it pools at its feet.")
+    print("the pool spreads.")
+    print("the pool is not a pool any more.")
+    pause(1.8)
+
+
+    print()
+    print(f"{PURPLE}it stands up out of the floor as a portal.{RESET}")
+    pause(1.2)
+    print("nothing behind it. the square, seen through something that is not air.")
+    pause(1.8)
+
+
+    print()
+    print(f"{BOSS} throws {OLD} aside like it is finished with him.")
+    pause(1)
+    print(f"{OLD} hits the ground and stays there.")
+    pause(1.2)
+    type_out(f"it turns, takes {YOUNG} by the back of the neck, and walks him into the doorway.", 0.02)
+    pause(1.5)
+    print(f"{YOUNG}: brother-")
+    pause(1)
+    print("gone.")
+    pause(1.5)
+    print("then the monster steps through after him.")
+    pause(2)
+
+
+    print()
+    print(f"{OLD} is on his hands and knees in the middle of the square.")
+    pause(1.2)
+    print("the doorway is still standing open.")
+    pause(1)
+    print("it is already smaller than it was.")
+    pause(1.5)
+
+
+    print()
+    portal_closing()
+    print()
+    input(f"{ICE}[ ENTER ]{RESET} ")
+
+
+    print()
+    print(f"{OLD} gets up.")
+    pause(0.8)
+    print("he runs.")
+    pause(0.8)
+    type_out("he goes through the portal shoulder first, and it takes him.", 0.02)
+    pause(2)
+
+
+    print()
+    print(f"{ICE}the portal closes on itself.{RESET}")
+    pause(1.5)
+    print("no light. no sound. no seam in the stones where it was.")
+    pause(2)
+    print("the square is empty.")
+    pause(2.5)
+
+
+    title_screen()
+
 
