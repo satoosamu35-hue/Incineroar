@@ -2,39 +2,37 @@ import time
 import random
 import sys
 import os
-
 #--------------------------------
 DEV = False
 
 #---------------------------------
 # COLOR CODEs
-
-RESET = "\033[0m"
-RED = "\033[31m"
-YELLOW = "\033[33m"
-PURPLE = "\033[35m"
-GREY = "\033[90" #BBLACK
-BLOOD = "\033[91m" #BRED
-PALE = "\033[97m" #BWHITE
-ICE = "\033[96m" #BCYAN
-GREEN = "\033[32m"
-BLUE = "\033[34m"
-CYAN = "\033[36m"
-BGREEN = "\033[92m"
+RESET   = "\033[0m"
+RED     = "\033[31m"
+YELLOW  = "\033[33m"
+PURPLE  = "\033[35m"
+GREY    = "\033[90m" #BBLACK
+BLOOD   = "\033[91m" #BRED
+PALE    = "\033[97m" #BWHITE
+ICE     = "\033[96m" #BCYAN
+GREEN   = "\033[32m"
+BLUE    = "\033[34m"
+CYAN    = "\033[36m"
+BGREEN  = "\033[92m"
 BYELLOW = "\033[93m"
-BBLUE = "\033[94m"
+BBLUE   = "\033[94m"
 BPURPLE = "\033[95m"
 
 #-----------------------------------------------------------
 
-OLD = "Araz"
-YOUNG = "Nadroj"
-BOSS = "The Monster"
+OLD        = "Araz"
+YOUNG      = "nadroj"
+BOSS       = "The monster"
 GAME_TITLE = "DESERT DYNASTY"
-MAX_HP = 14
+MAX_HP     = 14
+
 #-------------------------------------
 # ALL of my definitions
-
 def big_portal_closing(frames=16, delay=0.09):
     arrow = [
         r"     \ ",
@@ -42,34 +40,34 @@ def big_portal_closing(frames=16, delay=0.09):
         r"------/ ",
         r"     /   "
     ]
-
+    
     for i in range(frames):
-        left = " " * i 
+        left = " " * i
         mid = " " * max(1, 16 - i)
         gap = max(1, 10 - i)
-
+        
 
         door = [
-            fr"   /      \ ",
-            fr" (       )",
-            fr"  (       )",
-            fr"  \     / "
+            f"   /      \ ",
+            f" (       )",
+            f"  (       )",
+            f"  \     / "
         ]
-
+        
         frame_lines = []
         for row in range(4):
             line = left + f"{ICE}{arrow[row]}{RESET}" + mid + f"{PURPLE}{door[row]}{RESET}"
-            line = line.ljust(70)
+            line = line.ljust(70) 
             frame_lines.append(line)
-
-            print("\n", join(frame_lines), end="", flush=True)
-            time.sleep(delay)
-
-            if i < frames - 1:
-                print("\033[F" * 3, end="")
+        
+        print("\n".join(frame_lines), end="", flush=True)
+        time.sleep(delay)
+        
+        if i < frames - 1:
+            print("\033[F" * 3, end="")
             
-        print()
-ruins = (fr"""
+    print() 
+ruins = """
      .---.
 
      |   |      _.-._
@@ -81,16 +79,16 @@ ruins = (fr"""
   |     ||  |           |  |   |
   |     ||  |  \_____/  |  |   |
   |_____||__|___________|__|___|
-""")
-sand_dune = (fr"""
+"""
+sand_dune = f"""
      ________
     /    *    \ 
    / *       *  \ 
   /    *         ________
  /     *     *       *    \ 
 /__________________________\ 
-""")
-cactus = (fr"""
+"""
+cactus = """
       __
      |o |
      |  |   _
@@ -106,8 +104,8 @@ cactus = (fr"""
      |||
      |||
   \_______/
-""")
-camel = (fr"""
+"""
+camel = """
    _  _
   ( \/ )
 (. _ _ .)
@@ -116,7 +114,7 @@ camel = (fr"""
 \_  _ _ _/
  ||    ||
  ||    ||
-""")
+"""
 ans1 = "sand dune"
 ans2 = "camel"
 ans3 = "cactus"
@@ -126,38 +124,39 @@ def puzzle_one():
     while True:
         player_ans = input("I am made of tiny grains, but I am not sugar. The wind is my sculptor, and I constantly move across the desert floor, though I have no legs. What am I? ").lower()
         if player_ans == ans1:
-            print(sand_dune)
+            print(sand_dune)  
             print("Correct!")
             pause(2)
-            glitch_shake("Moving on to puzzle 2...")
+            glitch_shake("Moving on to Puzzle 2...")
             break
         else:
-            print("Wrong answer, try again")
+            print("Wrong answer, Try again")
 
 def puzzle_two():
-    print("\n---Puzzle 2---")
+    print("\n--- Puzzle 2 ---")
     while True:
         player_ans = input("I have a hump but I am not a hill. I can travel for days without a drink, carrying heavy loads across the burning sand. What am I? ").lower()
         if player_ans == ans2:
-            print(camel)
-            print("Correct!")
+            print(camel) 
+            print("Correct")
             pause(2)
-            glitch_shake("Moving on to the final puzzle...")
+            glitch_shake("Moving on to the final puzzle")
             break
         else:
-            print("Wrong answer, try again")
+            print("Wrong answer, Try again")
 
 def puzzle_three():
-    print("\n---Puzzle 2---")
+    print("\n--- Puzzle 3 ---")
     while True:
+        # Added .lower() here so capital letters don't break this puzzle
         player_ans = input("I wear a coat of sharp needles, but I never sew. I stand tall in the baking sun and store water inside my green skin. What am I? ").lower() 
         if player_ans == ans3:
-            print(cactus)
-            print("Correct!")
+            print(cactus)  
+            print("Correct")
             type_out("YOU HAVE ANSWERED THE GREAT SPHINX OF THE DESERT")
             break
         else:
-            print("Not quite right, try again")
+            print("Not quite right. Try again")
 
 def final_puz():
     puzzle_one()
@@ -168,24 +167,24 @@ def final_puz():
 
 def tunnel(radius=10):
     aspect_ratio_correction = 2.0
-    for y in range(-radius, radius +1):
+    for y in range(-radius, radius + 1):
         line = ""
-        for x in range(int(-radius * aspect_ratio_correction), int(radius* aspect_ratio_correction) +1):
+        for x in range(int(-radius * aspect_ratio_correction), int(radius * aspect_ratio_correction) + 1):
             scaled_x = x / aspect_ratio_correction
-
+            
             if abs(scaled_x**2 + y**2 - radius**2) < radius * 0.8:
                 line += "*"
             else:
                 line += " "
-        print(frame_lines)
+        print(line)
 
 
 def pause(t=1.0):
-    tiume.sleep(t)
+    time.sleep(t)
 
 def type_out(text, delay=0.018):
     for ch in text:
-        print(ch, end="", flush=true)
+        print(ch, end="", flush=True)
         time.sleep(delay)
     print()
 
@@ -261,7 +260,6 @@ def fly_star(width=20, delay=0.05, gap=3, star="☆", total_volleys=6):
             volley_count += 1
     except KeyboardInterrupt:
         print()
-
 def play_credits():
     credits_text = [
         "",
@@ -284,14 +282,20 @@ def play_credits():
         "",
         ""
     ]
-    screen_height = 10
+    screen_height = 10 
+    
     for i in range(len(credits_text)):
         clear_screen()
+        
         for line in credits_text[i:i+screen_height]:
-            print(line.center(50))
-        time.sleep(0.4)
+            print(line.center(50))  # Centers the text in a 50-character window
+            
+        time.sleep(0.4)  
+
     time.sleep(1)
     clear_screen()
+    print("\n\n")
+    type_out("Game Over. Goodbye!", delay=0.08)
     print("\n\n")
 
 def clear_screen():
@@ -306,9 +310,9 @@ def dramatic_print(text, delay=0.08, pause_at_end=1.5):
     print()
 
 def fake_input_struggle(prompt_text, required_presses=3):
-    print(f"{prompt_text}")
-    for i in range(required_presses=3):
-        input(f"   [Press ENTER to force yourself foward ({i+1}/{required_presses})]")
+    print(f"\n{prompt_text}")
+    for i in range(required_presses):
+        input(f"   [Press ENTER to force yourself forward ({i+1}/{required_presses})]")
         time.sleep(0.4)
 
 def glitch_shake(text, loops=4):
@@ -420,8 +424,9 @@ def play_scene():
 
 # finally omg.......... ANYWAY PLAYER TIME
 
-class player:
-    def __init__(self,name, HP=30):
+
+class Player:
+    def __init__(self, name, hp=30):
         self.name = name
         self.hp = hp
         self.max_hp = hp
@@ -452,6 +457,7 @@ class Player2:
 
 # done with players.... its not alot but tis alot when your doing everyhting over again..........
 
+
 class Creature:
     def __init__(self, name, hp, attacks, is_boss=False,
                  can_spare=False, spare_threshold=0.25, reward=None, gold=0):
@@ -464,6 +470,8 @@ class Creature:
         self.spare_threshold = spare_threshold
         self.reward = reward
         self.gold = gold
+
+
 
 def battle(player, enemy):
     print(f"\n{BLOOD}--- {enemy.name} ---{RESET}")
@@ -563,17 +571,18 @@ def brothers_battle(player, friend, enemy):
     print(f"\n{BLOOD}--- {enemy.name} ---{RESET}")
     pause(1)
     player._guarding = False
-    friend,_guarding = False
+    friend._guarding = False
     while enemy.hp > 0 and (player.hp > 0 or friend.hp > 0):
-        print(f" {PALE}{player.name:<12}{RESET} {hp_bar(player.hp, player.max_hp)} {player.hp}/{player.max_hp}")
-        print(f" {PALE}{friend.name:<12}{RESET} {hp_bar(friend.hp, friend.max_hp)} {friend.hp}/{friend.max_hp}")
-        print(f" {BLOOD}{enemy.name:<12}{RESET} {hp_bar(enemy.hp, player.max_hp)} {enemy.hp}/{enemy.max_hp}")
+        print(f"  {PALE}{player.name:<12}{RESET} {hp_bar(player.hp, player.max_hp)} {player.hp}/{player.max_hp}")
+        print(f"  {PALE}{friend.name:<12}{RESET} {hp_bar(friend.hp, friend.max_hp)} {friend.hp}/{friend.max_hp}")
+        print(f"  {BLOOD}{enemy.name:<12}{RESET} {hp_bar(enemy.hp, enemy.max_hp)} {enemy.hp}/{enemy.max_hp}")
         print()
-        print(f" {GREY} << you are both of them now>> {RESET}")
+        print(f"  {GREY}- you are both of them now -{RESET}")
         print()
-        
+
         spare_open = enemy.can_spare and enemy.hp <= enemy.max_hp * enemy.spare_threshold
 
+        # ---- big brother picks ----
         menu = (f"  {PALE}{player.name}{RESET} ->  {YELLOW}1{RESET} strike    "
                 f"{YELLOW}2{RESET} guard    {YELLOW}3{RESET} call out    {YELLOW}4{RESET} item")
         if spare_open:
@@ -632,6 +641,8 @@ def brothers_battle(player, friend, enemy):
 
         if enemy.hp <= 0:
             break
+
+        # ---- little brother picks ----
         if friend.hp > 0:
             menu = (f"  {PALE}{friend.name}{RESET} ->  {YELLOW}1{RESET} strike    "
                     f"{YELLOW}2{RESET} guard    {YELLOW}3{RESET} call out    {YELLOW}4{RESET} item")
@@ -692,37 +703,81 @@ def brothers_battle(player, friend, enemy):
         if enemy.hp <= 0:
             break
 
+        pause(0.8)
+        if player.hp > 0 and friend.hp > 0:
+            target = random.choice([player, friend])
+        elif player.hp > 0:
+            target = player
+        else:
+            target = friend
+
+        atk = random.choice(enemy.attacks)
+        dmg = random.randint(atk["min"], atk["max"])
+        if target._guarding:
+            dmg = max(1, dmg // 2)
+        target.hp -= dmg
+        print(f"  {enemy.name} - {atk['text']}")
+        print(f"  it catches {target.name}. {BLOOD}-{dmg}{RESET}"
+              + ("   (guarded)" if target._guarding else ""))
+        if atk.get("funfact"):
+            print(f"  {GREY}* {atk['funfact']}{RESET}")
+        player._guarding = False
+        friend._guarding = False
+        pause(0.6)
+
+        if friend.hp <= 0:
+            friend.hp = 0
+            print(f"  {BLOOD}{friend.name} is down!{RESET}")
+        if player.hp <= 0:
+            player.hp = 0
+            print(f"  {BLOOD}{player.name} is down!{RESET}")
+        print()
+
+    if enemy.hp <= 0:
+        player.gold += enemy.gold
+        if enemy.gold:
+            print(f"  {YELLOW}+{enemy.gold} gold{RESET}")
+        print(f"\n{enemy.name} is defeated.")
+        if friend.hp <= 0:
+            friend.hp = 1
+            print(f"  {GREY}{friend.name} drags himself back up. 1 hp.{RESET}")
+        return "defeated"
+    print(f"\n{BLOOD}both brothers fell.{RESET}")
+    return "lost"
+
 # FINALLY NO MORE BATTLE STUFF MY BRAIN CANT TAKE THIS
 # oh yeah shoppy time
 
-def shop(player,world):
-    print(f"\n{YELLOW} --- SHop --- {RESET}")
+def shop(player, world):
+    print(f"\n{YELLOW}--- shop ---{RESET}")
     pause(1)
     stock = world.get("shop_stock", [])
     if not stock:
-        print(" The shelves are empty :O ")
+        print("  the shelves are empty.")
         return
     while True:
-        print(f" {PALE}gold: {player.gold}{RESET}\n")
+        print(f"  {PALE}gold: {player.gold}{RESET}\n")
         for i, it in enumerate(stock):
             print(f"  {i+1} {it['name']}   {it['price']}g   (heal {it['heal']})")
-        print(f" b Back")
+        print(f"  b back")
         c = input("  > ").strip()
         if c.lower() == "b":
             return
+        # no try/except - just check the number the plain way
         if c.isdigit() and int(c) >= 1 and int(c) <= len(stock):
-            it = stock[int(c) -1]
+            it = stock[int(c) - 1]
             if player.gold < it["price"]:
-                print(f"  {GREY}not enough gold. {RESET}")
+                print(f"  {GREY}not enough gold.{RESET}")
                 continue
             player.gold -= it["price"]
             add_item(player, {"name": it["name"], "heal": it["heal"]})
-            print(f" bought  {it["nane"]}.")
-        else: 
-            print(f"   {GREY}pick a number or b. {RESET}")
+            print(f"  bought {it['name']}.")
+        else:
+            print(f"  {GREY}pick a number or b.{RESET}")
 
 # yaaayyy done with shopppyyy bye bye shoppy
 #towny time
+
 def town(player, world, friend=None):
     print(f"\n{YELLOW}--- {world['town_name']} ---{RESET}")
     pause(1)
@@ -760,7 +815,9 @@ def town(player, world, friend=None):
             return
         else:
             print(f"  {GREY}1, 2, 3 or 4.{RESET}")
+
 #now for the scenes ooh i luv these I DID ALL THERSE MYSELF OK I SPENT AGES ON THIS STORY 
+
 
 def scene_library():
     print("This is meant to be a text based version of my video game to come named Desert Dynasty, if you aren't a reader or interested in lore, this game at the moment may not be for you, Regardless i suggest you play it Enjoy :3")
@@ -835,6 +892,7 @@ def scene_library():
 #housey 
 # my best freind helped me with this part. i got it to work but he helped me figureout the fire thingy. no ai here
 # tried to do some funny secrets. i like it :D
+
 def scene_home():
     fire_on = True
     fridge_open = False
@@ -963,9 +1021,9 @@ def scene_home():
     fly_star()
     for i in range(5):
         print(" ")
-
 # now for the super evil bad guy to come. nwo that i think abotu it while retyping this i severly dont remember if i named this guy.
 # ehhh sucks to suck
+
 def scene_square():
     print()
     print(f"{GREY}- THE SQUARE -{RESET}")
@@ -1228,11 +1286,12 @@ def scene_square():
     pause(2.5)
 
     title_screen()
-
+    
 # i typed as much as i could man from scracth again this is a very lroe based game im a wrtier but my goodness! 
 # sometimes too much bee too much. man i can wait to make graphics so i dont have to read like this
 
 def scene_world1_intro():
+    # WORLD 1 STARTS NOW BABY WOOOOHOO
     type_out(f"{BBLUE}Araz: What the")
     time.sleep(0.5)
     type_out(f"{BBLUE}Araz: nadroj? ")
@@ -1272,6 +1331,7 @@ def scene_world1_intro():
 
     new_team("Aron")
 
+
 # man i remeber being real excited to do this scence. during the development anyways typing this all again SUCKS
  # ===============================================================================
  # ALL DA INFO FOR WORLD ONE IS GON BEIN DIS SECTION RIGHT HERE
@@ -1307,8 +1367,8 @@ armadillo = Creature(
 WORLD_1 = {
     "name": "Desert",
     "town_name": "Zerzora",
-    "small_monsters": [m1,m2,m3,m4,m5],
-    "town_creatures": ["bella", "jax", "shopkeep", "leon"],
+    "small_monsters": [m1, m2, m3, m4, m5],
+    "town_creatures": ["bella","jax","shopkeep","leon"],
     "sub_boss": jackrabbit,
     "boss": armadillo,
     "spawn_chance": 0.7,
@@ -1492,7 +1552,9 @@ WORLD_2 = {
         {"name": "Hot chocolate",    "price": 18,  "heal": 25},
     ],
 }
+
 # fun fact i spun a wheel to see which one piece char id oput in the village becuase i was bored and it landed on zoro :3 go wheel
+
 def run_world1(player, world, start=0):
     print(f"\n{ICE}========== WORLD: {world['name']} =========={RESET}")
     pause(1)
@@ -1530,7 +1592,6 @@ def run_world1(player, world, start=0):
         icesub = world["icesub_boss"]
         icesub.hp = icesub.max_hp
         # in my story the wolverine and snake are my only girl boss characters im maybe thinking of making the addx in my 4th world a girl but drawing athena like armors hard ish
-
         type_out(f"{CYAN}the wolverine plants its hammer and looks at you.{RESET}", 0.02)
         pause(1)
         print(f"{CYAN}wolverine: Hah! a new opponent! good ive been getting tired of facing numbskulls. not like you'll be nay different!{RESET}")
@@ -1567,6 +1628,7 @@ def run_world1(player, world, start=0):
             print()
             type_out(f"{GREEN} you now know where your brother is!{RESET}")
 # also this like double text is just like this becuase i neeeded soemthing simple and i didnt have time to worry about the fact truing off this spare might do something to the other bosses not only that but it kept running else in dev mode so i didnt wanna risk it
+
         else:
             print(f"{CYAN}wolverine: impossible! theres no way you could've beaten me i'm the strongest around!{RESET}")
             pause(1.2)
@@ -1653,7 +1715,8 @@ def run_world1(player, world, start=0):
 #oooooooooooooooooo finally done with these two worlds. im stayign up past my bed tiem to do this...
 # anything for coding i say  im sligtghly loosing motivation just having to fix things but ireally want this game to be real so icant give upo on the little things >:3
 # ANYYWAYS WORLD 3
-#fun fact the ;etter number i have representing the creatures were totaly random i asked randoms in my class to pick a letter
+#fun fact the letter number i have representing the creatures were totaly random i asked randoms in my class to pick a letter
+
 z1 = Creature("fennec fox", 12, [{"name":"nip","min":3,"max":4,"text":"it nips."}], gold=5)
 z2 = Creature("kangaroo rat", 12, [{"name":"bite","min":3,"max":4,"text":"it bites."}], gold=5)
 z3 = Creature("bat", 12, [{"name":"scratch","min":3,"max":6,"text":"it scratches."}], gold=9)
@@ -1697,6 +1760,7 @@ WORLD_3 = {
     ],
 }
 
+
 def run_world2(player, friend, world, start=0):
     print(f"\n{GREY}========== WORLD: {world['name']} =========={RESET}")
     pause(1.5)
@@ -1729,9 +1793,8 @@ def run_world2(player, friend, world, start=0):
         pause(1.5)
         nightsub = world["nightsub_boss"]
         nightsub.hp = nightsub.max_hp
-        # the kit fox has so far been my hardest character to desing mainly becuase ervtyimg i draw him he wither loks like a cat or a chihuahua no inbetween
-        #i also think he just reminds me of my grnapas dog personality wise
-        type_out(f"{GREY}the kit fox plants its claymore and looks at you.{RESET}", 0.02)
+ # the kit fox has so far been my hardest character to desing mainly becuase ervtyimg i draw him he wither loks like a cat or a chihuahua no inbetween
+        #i also think he just reminds me of my grnapas dog personality wise        type_out(f"{GREY}the kit fox plants its claymore and looks at you.{RESET}", 0.02)
         pause(1)
         print(f"{GREY}kit fox: my goodness! its_ humans! humans in my realm! you'll never get past me humans!{RESET}")
         time.sleep(1.5)
@@ -1780,6 +1843,7 @@ def run_world2(player, friend, world, start=0):
             play_scene()
             print(f"{BBLUE} Araz: there you are bud cmon lets go.{RESET}")
 # update tibert measn bold or brave people coming from old germanic and french. look at me being smart with my names
+
         while True:
             print(f"\n  {CYAN}1{RESET} go back to town")
             print(f"  {CYAN}2{RESET} move forward")
@@ -1805,8 +1869,7 @@ def run_world2(player, friend, world, start=0):
     nightboss.hp = nightboss.max_hp
     # writing her perosnality was hard and not hard ebcuase she reminded me of hornet from silksong but then she also feels like she has asuperiority conplex which ive been wondeing about
     #its funny im wondeifng and these are my charsatcers :'3
-    # tuis the life of an author who really wants to make video games
-    print(f"{GREY}coming into view you see a tunnel{RESET}")
+    # tuis the life of an author who really wants to make video games    print(f"{GREY}coming into view you see a tunnel{RESET}")
     tunnel(5)
     print(f"{BPURPLE} nadroj: araz look its a tunnel! maybe thats our way out{RESET}")
     input("[ ENTER ]" )
@@ -1851,6 +1914,7 @@ def run_world2(player, friend, world, start=0):
     portal_closing()
     return "cleared"
 
+
 # YOOO PUZZLE TIME BABY 
 # i spent forveer in my free time lookign for puzzles that wouldnt be too hard but i didnt want to do another word unscrambker again sooo i shoose riddelssss
 #  i cant do like visual puzzles obvioulsy (i aint that good sadly... im getitng better) so we got typicall unscrmabing keeoing it simple
@@ -1870,6 +1934,7 @@ def puzzle_gate2():
             print("You solved the puzzle! You may move on")
             break
         print("Wrong, try again!\n")
+
 #genuienly in the devlopent these gave me so much troubleeeee it would not work soemtimes :'3
 #devlopmet mode timeeeee this thing gave me so much trouble man am i glad i got it to work
 def dev_menu():
@@ -1887,7 +1952,8 @@ def dev_menu():
         return int(c)
     return 0
 
-#finally after so many gosh darn defnitions i can finally run the world... WITH ANOTHER DEFINTIOOOONNNn
+#finally after so many gosh darn defnitions i can finally run the world... WITH ANOTHER LOOOOPPPPPP
+
 if __name__ == "__main__":
     start = dev_menu() if DEV else 0
 
