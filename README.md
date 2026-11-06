@@ -9,7 +9,8 @@ Currently I only have 3 worlds done due to small time constraints, but I believe
 This game is a text-based game that requires reading and battle progression. This game is a rogue-like one; if you "fall" in the game, then you must restart at the moment.
 
 
-+====================================================================================
++=====================================================
+
 THERE ARE NO SAVE SPORTS IF YOU DIE TEH GAME WILL CLOSE AND YOU START OVER!!!!!!!!!!!!!!
 
 ==============================================================================
