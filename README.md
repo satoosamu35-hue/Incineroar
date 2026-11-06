@@ -13,7 +13,7 @@ This game is a text-based game that requires reading and battle progression. Thi
 
 THERE ARE NO SAVE SPORTS IF YOU DIE TEH GAME WILL CLOSE AND YOU START OVER!!!!!!!!!!!!!!
 
-==============================================================================
+==================================================
 The game progresses by you completing puzzles, exploring, and battling while maintaining your health.
 Puzzles include word unscrambling and riddles
 .Exploring is not a super important part; you don't have to explore certain places if you don't wish to, but I suggest it for some somewhat funny dialogue
