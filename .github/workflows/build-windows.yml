@@ -1,0 +1,32 @@
+
+name: Build Desert Dynasty for Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install PyInstaller
+        run: python -m pip install pyinstaller
+
+      - name: Build Windows EXE
+        run: python -m PyInstaller --clean --onefile --name DesertDynasty DesertDynasty.py
+
+      - name: Upload Windows EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: DesertDynasty-Windows
+          path: dist/DesertDynasty.exe
